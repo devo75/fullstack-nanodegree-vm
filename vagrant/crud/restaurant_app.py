@@ -11,10 +11,6 @@ myFirstRestaurant = Restaurant(name = "Pizza Palace")
 session.add(myFirstRestaurant)
 session.commit()
 
-myFirstRestaurant = Restaurant(name = "Pizza Palace")
-session.add(myFirstRestaurant)
-session.commit()
-
 cheesepizza = MenuItem(name="Cheese Pizza", 
                        description = "Made with all natural ingredients and fresh mozzarella", 
                        course="Entree", 
@@ -28,5 +24,5 @@ firstResult.name
 
 items = session.query(MenuItem).all()
 for item in items:
-    print(item.name)
+    print(item.name + " " + item.price)
 
