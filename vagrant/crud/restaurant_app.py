@@ -19,8 +19,12 @@ cheesepizza = MenuItem(name="Cheese Pizza",
 session.add(cheesepizza)
 session.commit()
 
-firstResult = session.query(Restaurant).first()
-firstResult.name
+#firstResult = session.query(Restaurant).first()
+#firstResult.name
+
+restaurants = session.query(Restaurant).all()
+for restaurant in restaurants:
+    print(restaurant.name)
 
 items = session.query(MenuItem).all()
 for item in items:
