@@ -1,0 +1,9 @@
+<h1>EDIT CAMPGROUND</h1>
+   
+<form action="{{ url_for('editCampground',campground_id = campground.id)}}" method = 'post'>
+    <label>Edit Campground</label>
+    <input type ='text' name='name' placeholder = '{{campground.name }}'>
+    <input type='submit' value='Edit'>
+</form> 
+
+  

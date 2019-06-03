@@ -1,0 +1,15 @@
+<h1>{{campground.name}} Reviews</h1>
+
+<!--<h2>{{campground.id}}</h2>-->
+
+{% for item in items %}
+        <!--<h4>{{item.id}}</h4>-->
+        <h4>{{item.experience}}</h4>
+        <h4>{{item.description}}</h4>
+        <h4>{{item.category}}</h4>
+
+       <p><a href = "{{url_for('editSiteReview', campground_id = campground.id, site_id=item.id)}}">Edit Review</a></p>
+       <p><a href = "#">Delete Review</a></p>
+
+        {% endfor %}
+
