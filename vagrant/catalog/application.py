@@ -38,15 +38,12 @@ def editCampground(campground_id):
     if request.method == 'POST':
         if request.form['name']:
             editedCampground.name = request.form['name']
+            session.add(editedCampground)
+            session.commit()
             return redirect(url_for('showCampgrounds'))
     else:
         return render_template(
             'editCampground.html', campground=editedCampground)
-
-
-
-
-
 
 #Delete A Campground
 @app.route('/campground/<int:campground_id>/delete/', methods=['GET', 'POST'])
