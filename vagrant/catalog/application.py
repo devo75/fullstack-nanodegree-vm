@@ -33,13 +33,20 @@ def createCampground():
 #Edit A Campground
 @app.route('/campground/<int:campground_id>/edit/', methods=['GET', 'POST'])
 def editCampground(campground_id):
-       editedCampground = session.query(Campground).filter_by(id=campground_id).one()
-       if request.method == 'POST':
-              if request.form['name']:
-                     editedCampground.name = request.form['name']
-                     return redirect(url_for('showCampgrounds'))
-       else:
-              return render_template('editCampground.html', campground=editedCampground)
+    editedCampground = session.query(
+        Campground).filter_by(id=campground_id).one()
+    if request.method == 'POST':
+        if request.form['name']:
+            editedCampground.name = request.form['name']
+            return redirect(url_for('showCampgrounds'))
+    else:
+        return render_template(
+            'editCampground.html', campground=editedCampground)
+
+
+
+
+
 
 #Delete A Campground
 @app.route('/campground/<int:campground_id>/delete/', methods=['GET', 'POST'])
