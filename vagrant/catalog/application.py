@@ -65,7 +65,20 @@ def showSiteReview(campground_id):
        items = session.query(SiteReview).filter_by(campground_id=campground_id).all()
        return render_template('siteReview.html', campground=campground, items=items)
 
-# Edit A Site Review
+#Create A Site Review
+@app.route('/campground/<int:campground_id>/review/new-review/', methods=['GET', 'POST'])
+def newSiteReview(campground_id):
+       if request.method == 'POST':
+              newSiteReview = SiteReview(experience=request.form['experience'], description=request.form['description'], 
+              category=request.form['category'], campground_id=campground_id)
+              session.add(newSiteReview)
+              session.commit()
+              return redirect(url_for('showSiteReview', campground_id=campground_id))
+       else:
+              return render_template('newSiteReview.html', campground_id=campground_id)
+
+
+#Edit A Site Review
 @app.route('/campground/<int:campground_id>/review/<int:site_id>/edit/', methods=['GET', 'POST'])
 def editSiteReview(campground_id, site_id):
        editedSiteReview = session.query(SiteReview).filter_by(id=site_id).one()

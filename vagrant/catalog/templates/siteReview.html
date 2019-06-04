@@ -13,3 +13,7 @@
 
         {% endfor %}
 
+        
+        <p> There currently aren't any reviews <p>
+        <a href = "{{url_for('newSiteReview', campground_id = campground.id )}}">Add a review</a>
+                     
