@@ -1,9 +1,9 @@
 <h1>DELETE A CAMPGROUND</h1>
 
-<form action="{{ url_for('deleteCampground',campground_id = campground.id)}}" method = 'post'>
-        <label>Delete Campground</label>
-        <input type ='text' name='name' placeholder = '{{campground.name }}'>
-        <input type='submit' value='Delete'>
-    </form>   
+<h1> Are you sure you want to delete the following campground: {{campground.name}}? </h1>
+
+<form action="#" method = 'post'>
+
+<input type='submit', value = 'Delete'>
   
  

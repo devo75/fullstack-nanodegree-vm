@@ -1,3 +1,6 @@
+{% extends "main.html" %}
+{% block content %}
+
 <h1>CREATE A REVIEW </h1>
 
 <form action="#" method = 'post'>
@@ -8,5 +11,6 @@
     <input type='radio' name='category' value='Will definitely come back'>Will definitely come back <br>
     <input type ='radio' name='category' value='Might come back'>Might come back <br>
     <input type ='radio' name='category' value='Will not come back'>Will not come back <br><br>
-    <input type='submit' value='Add Review'>
+    <input type='submit' class="btn btn-success" value='Add Review'>
 </form>    
+{% endblock %}

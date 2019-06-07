@@ -82,12 +82,34 @@ def newSiteReview(campground_id):
 @app.route('/campground/<int:campground_id>/review/<int:site_id>/edit/', methods=['GET', 'POST'])
 def editSiteReview(campground_id, site_id):
        editedSiteReview = session.query(SiteReview).filter_by(id=site_id).one()
-       return render_template('editSiteReview.html', campground_id=campground_id, site_id=site_id, item=editedSiteReview)    
+       if request.method =='POST':
+              if request.form['experience']:
+                     editedSiteReview.experience = request.form['experience']
+              if request.form['description']:
+                     editedSiteReview.description = request.form['description']   
+              if request.form['category']:
+                     editedSiteReview.category = request.form['category'] 
+              session.add(editedSiteReview)
+              session.commit()
+              return redirect(url_for('showSiteReview', campground_id=campground_id))    
+       else:
+              return render_template('editSiteReview.html', campground_id=campground_id, site_id=site_id, item=editedSiteReview)  
+
+#Delete A Site Review 
+@app.route('/campground/<int:campground_id>/review/<int:site_id>/delete/', methods=['GET', 'POST'])
+def deleteSiteReview(campground_id, site_id):
+       siteReviewToBeDeleted = session.query(SiteReview).filter_by(id=site_id).one()
+       if request.method == 'POST':
+              session.delete(siteReviewToBeDeleted)
+              session.commit()
+              return redirect(url_for('showSiteReview', campground_id=campground_id))
+       else:
+              return render_template('deleteSiteReview.html', item=siteReviewToBeDeleted)       
+            
+
+
 
      
-
-
-
 if __name__ == '__main__':
        #app.secret_key = 'super_secret_key'
     app.run(host='0.0.0.0', port=5000)    
